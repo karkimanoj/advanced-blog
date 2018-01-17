@@ -989,11 +989,11 @@ window.Vue = __webpack_require__(35);
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-/* not needed as we use use individual component for each page
-const app = new Vue({
-   el: '#app'
+
+var app = new Vue({
+  el: '#app',
+  data: {}
 });
-*/
 
 /***/ }),
 /* 11 */

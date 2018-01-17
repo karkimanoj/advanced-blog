@@ -17,8 +17,8 @@ window.Vue = require('vue');
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue'));
  
- /* not needed as we use use individual component for each page
-const app = new Vue({
-    el: '#app'
+
+var app = new Vue({
+    el: '#app',
+    data: {}
 });
-*/
