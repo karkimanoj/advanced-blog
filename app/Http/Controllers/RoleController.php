@@ -44,7 +44,7 @@ class RoleController extends Controller
         $this->validate($request, [
             'name'=>'required|min:5|max:100|alphadash|unique:roles,name',
             'display_name'=>'required|min:5|max:100',
-            'description'=>'required|min:5|max:100'
+            'description'=>'required|min:5|max:190'
           ]);
 
         $role=new Role;
@@ -97,7 +97,7 @@ class RoleController extends Controller
     {// dd($request);
         
         $this->validate($request, ['display_name'=>'required|min:5|max:100',
-                                    'description'=>'required|min:5|max:100'
+                                    'description'=>'required|min:5|max:190'
                                   ]);
         $role=Role::findOrFail($id);
         $role->display_name=$request->display_name;

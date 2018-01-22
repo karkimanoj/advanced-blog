@@ -49,6 +49,14 @@
                 $('#sidebar').toggleClass('active');
             });
 
+            $.each($('.col_ul').children('li'), function() {
+           // $.each($('#pageSubmenu').next().children('li'), function(){
+             if($(this).hasClass('active'))
+                //$('.col_ul').removeClass('collapse');
+               $('.col_ul').collapse('show');
+            });
+
+
         });
     </script>
     </body>

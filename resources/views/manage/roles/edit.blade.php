@@ -40,7 +40,7 @@
 			                        </div>
 			                        <div class="form-group {{ $errors->has('description')?'has-error':'' }}">
 			                            <label> Description </label>
-			                            <input type="text" name="description" class="form-control" value="{{$role->description}}" required minlength="8" maxlength="250">
+			                            <input type="text" name="description" class="form-control" value="{{$role->description}}" required minlength="8" maxlength="190">
 			                        </div>
 							    <h3>Permission details:</h3>
 							  </div>

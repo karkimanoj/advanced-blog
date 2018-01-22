@@ -24,6 +24,15 @@
 							<label>Email</label>
 							<span>{{$user->email}}</span>
 						</p>
+
+						<h3>Role</h3>
+						<ul>
+							{{$user->roles->count()==0 ?'no roles has been assigned to this user':''}}
+							@foreach($user->roles as $role)
+							<li>{{$role->display_name}}
+							  	<i class="text-muted">({{$role->description}})</i></li>
+							@endforeach
+						</ul>
 				  </div>
 				</div>
 				

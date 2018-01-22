@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
 use Session;
 use Hash;
 
@@ -37,7 +38,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('manage.users.create');
+        $roles=Role::all();
+        return view('manage.users.create', ['roles'=>$roles] );
     }
 
     /**
@@ -74,7 +76,11 @@ class UserController extends Controller
         $user->password=Hash::make($password);
 
         if($user->save())
+        {
+             $user->roles()->sync($request->input('roles'), false);
+             Session::flash('error','sorry new user cannot be created');
             return redirect()->route('users.show', $user->id);
+        }
         else
         {
             Session::flash('error','sorry new user cannot be created');
@@ -90,7 +96,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user=User::findOrFail($id);
+        $user=User::where('id', $id)->with('roles')->first();
         return view('manage.users.show', ['user'=>$user]);
     }
 
@@ -102,8 +108,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user=User::findOrFail($id);
-        return view('manage.users.edit', ['user'=>$user]);
+        $user=User::where('id', $id)->with('roles')->first();
+        $roles=Role::all();
+        return view('manage.users.edit', ['user'=>$user, 'roles'=>$roles]);
     }
 
     /**
@@ -126,8 +133,13 @@ class UserController extends Controller
 
          if($request->passedit_radio=='manual')
             $user->password=Hash::make($request->password);
+
         else if($request->passedit_radio=='auto')
-        {
+        { 
+            /*
+              auto generating random password of 8 characters  
+            */
+
             $length=10;
             $keys='123456789abcdefghJkLmnpQRSTuVWXYz';
             $str='';
@@ -140,7 +152,9 @@ class UserController extends Controller
         }
 
         if($user->save())
-        {
+        {   
+            $user->roles()->sync($request->input('roles'), true);
+            Session::flash('success','updating user credentials for '.$user->name);
             return redirect()->route('users.show', $id);
         } else
         {

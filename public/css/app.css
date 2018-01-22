@@ -11919,7 +11919,7 @@ a:focus {
 #sidebar ul li.active > a,
 a[aria-expanded="true"] {
   color: #fff;
-  background: #6d7fcc;
+  background: #3F51B5;
 }
 
 a[data-toggle="collapse"] {
@@ -12008,5 +12008,9 @@ a.article:hover {
   transition: 0.3s;
   padding: 10px 0 10px 20px;
   border-radius: 5px;
+}
+
+.panel_card {
+  height: 125px;
 }
 

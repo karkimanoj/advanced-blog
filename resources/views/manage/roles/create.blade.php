@@ -48,7 +48,7 @@
 			                        </div>
 			                        <div class="form-group {{ $errors->has('description')?'has-error':'' }}">
 			                            <label> Description </label>
-			                            <input type="text" name="description" class="form-control" required minlength="8" maxlength="250">
+			                            <input type="text" name="description" class="form-control" required minlength="8" maxlength="190">
 			                            @if($errors->has('description'))
 		                                    <span class="help-block">
 		                                        <strong>{{ $errors->first('description') }}</strong>

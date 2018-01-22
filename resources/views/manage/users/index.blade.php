@@ -32,8 +32,9 @@
 							<td>{{ $user->name }}</td>
 							<td>{{ $user->email }}</td>
 							<td>{{ $user->created_at->toFormattedDateString() }}</td>
-							<td>
-								<a href="{{ route('users.edit', [$user->id]) }}" class="btn btn-default"> edit </a>
+							<td class="text-center">
+								<a href="{{ route('users.show', [$user->id]) }}" class="btn btn-default"> view </a>
+								<a href="{{ route('users.edit', [$user->id]) }}" class="btn btn-default "> edit </a>
 							</td>
 						</tr>
 						@endforeach

@@ -24,14 +24,15 @@
 					    <h4>{{$role->name}}</h4>
 					    <h5 class="mb-2 text-muted">{{$role->display_name}}</h5>
 					  </div>
-					  <div class="panel-body">
+					  <div class="panel-body panel_card">
 					    {{$role->description}}
 					  </div>
-
-					  <div class="row m-b-10">
-						 <div class="col-md-4 col-md-offset-1 m-t-10 text-center "> <a href="{{route('roles.show', $role->id)}}" class="btn btn-primary btn-block">details</a></div>
-						  <div class="col-md-4 col-md-offset-1 m-t-10 text-center"><a href="{{route('roles.edit', $role->id)}}" class="btn btn-default btn-block">edit</a></div>
-					  </div>
+					 
+						  <div class="row m-b-10">
+							 <div class="col-md-4 col-md-offset-1 m-t-10 text-center "> <a href="{{route('roles.show', $role->id)}}" class="btn btn-primary btn-block">details</a></div>
+							  <div class="col-md-4 col-md-offset-1 m-t-10 text-center"><a href="{{route('roles.edit', $role->id)}}" class="btn btn-default btn-block">edit</a></div>
+						 
+						</div>  
 					</div>	
 				</div>
 				@endforeach
