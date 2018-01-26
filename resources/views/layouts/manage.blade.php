@@ -23,10 +23,10 @@
         <div class="wrapper">
                        
               @include('_includes.nav.manageSidebar')
-
+              @include('_includes.nav.managenavbar')
               <div id="content">
 
-                @include('_includes.nav.managenavbar')
+                
                 @yield('content')
 
               </div>

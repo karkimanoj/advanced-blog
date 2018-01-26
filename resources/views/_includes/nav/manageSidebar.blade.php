@@ -8,20 +8,30 @@
 
                 <ul class="list-unstyled components">
                     <p>Dummy Heading</p>
-                    <li >
+                    <li>
+                        <a href="#" class="{{Nav::hasSegment(['posts'], 2)}}" style="font-size: 1.3em;">content</a>
+                        <ul class="list-unstyled m-l-20" >
+                            <li class="{{Nav::isResource('posts')}}"><a href="{{route('posts.index')}}">posts</a></li>
+                    
+                        </ul>
+                    </li>
+
+                    <li>
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <ul class="collapse list-unstyled m-l-20" id="homeSubmenu">
                             <li><a href="#">Home 1</a></li>
                             <li><a href="#">Home 2</a></li>
                             <li><a href="#">Home 3</a></li>
                         </ul>
                     </li>
+
                     <li class="{{Nav::isRoute('manage.dashboard')}}">
                       <a href="{{route('manage.dashboard')}}"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a>
                     </li>
+
                     <li>
                         <a href="#pageSubmenu" class="{{Nav::hasSegment(['users','roles','permissions'], 2)}}" data-toggle="collapse" aria-expanded="false">Administration</a>
-                        <ul class="collapse list-unstyled col_ul" id="pageSubmenu">
+                        <ul class="collapse list-unstyled col_ul m-l-20" id="pageSubmenu">
                             <li class="{{Nav::isResource('users')}}"><a href="{{route('users.index')}}"><i class="fa fa-users m-r-5" aria-hidden="true"></i> Manage users</a></li>
                             <li class="{{Nav::isResource('roles')}}"><a href="{{route('roles.index')}}"><i class="fa fa-user-secret" aria-hidden="true"></i> Manage Roles</a></li>
                             <li class="{{Nav::isResource('permissions')}}"><a href="{{route('permissions.index')}}"><i class="fa fa-key" aria-hidden="true"></i> Manage permission</a></li>

@@ -12,6 +12,8 @@
 */
 
 Route::prefix('manage')->middleware('role:superadministrator|administrator|editor|author|contributor')->group( function(){
+
+	Route::resource('/posts','PostController');
 	Route::resource('/roles', 'RoleController', ['except'=>'destroy']);
 		Route::resource('/permissions', 'PermissionController', ['except'=>'destroy']);
 		Route::resource('/users', 'UserController');
