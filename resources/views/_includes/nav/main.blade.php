@@ -8,15 +8,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{ route('home') }}">Devmarketer</a>
+      <a class="navbar-brand" href="{{ route('home') }}">kecstudents</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Learn <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Discuss</a></li>
-         <li><a href="#">Share</a></li>
+        <li class="active"><a href="#">departments <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">downloads</a></li>
+         <li><a href="#">about</a></li>
         
       </ul>
       <form class="navbar-form navbar-left">
@@ -31,6 +31,39 @@
           <li><a href="{{ route('login') }}">login</a></li>
           <li><a href="{{ route('register') }}">Join the community</a></li>
         @else
+
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-bell fa-2x" aria-hidden="true"><span class="badge">{{Auth::user()->notifications->count()}}</span></i>
+          </a>
+          <ul class="dropdown-menu ">
+              <li style="padding:10px 20px 10px 20px; border-bottom: 1px solid #E5E5E5;">Notifications
+                   </li>
+                  
+            @if(Auth::user()->notifications->count()<1)
+                  <li><a  style="padding: 10px 20px 10px 20px;" href="#">no notifications to show</a></li>
+            @else
+              @foreach(Auth::user()->notifications as $notification)
+                  @if($loop->index>7)
+                    @break
+                  @endif
+                  @if($notification->unread())
+
+                    <li style="background-color: #EDF2FA; border-bottom: 1px solid #E5E5E5"><a  style="padding: 10px 20px 10px 20px; font-size: 0.9em; " href="{{$notification->data['url']}}" >{{$notification->data['message']}}
+                     </a></li>
+                  @else
+                      <li ><a  style="padding: 10px 20px 10px 20px;font-size: 0.9em;" href="{{$notification->data['url']}}" >{{$notification->data['message']}}
+                     </a></li>
+                  @endif
+                   
+              @endforeach
+                  <a  style="padding: 10px 20px 10px 20px; color: #7386D5;" href="#" >
+                      see all notification </a>
+                </li>
+            @endif
+          </ul>
+        </li>
+
         <li class="dropdown ">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <span>hy {{Auth::user()->name}} <span> 
@@ -47,6 +80,7 @@
             </li>
           </ul>
         </li>
+
         @endif
       </ul>
 

@@ -17,11 +17,34 @@ window.Vue = require('vue');
  */
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue'));
- 
+
+//Vue.component('RoleComponent', require('./components/RoleComponent.vue'));
 
 var app = new Vue({
-    el: '#app',
-    data: {}
+    el: '#app2',
+    data:{
+    	messages: []
+         },
+
+      created (){
+        Echo.private('role-channel')
+            .listen('Event', (e) => {
+                
+                this.messages.push(e);
+        });
+    }     
+
+   
 });
+
+
+
+
+
+  
+    
+
+
+
 
    

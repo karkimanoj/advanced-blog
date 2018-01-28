@@ -11,9 +11,10 @@
     <title>Devmarketer-Management</title>
 
     
-        <!-- Our Custom CSS -->
+        <!-- Our Custom CsS -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Condensed" rel="stylesheet">
+        
      
 
 </head>
@@ -25,7 +26,7 @@
               @include('_includes.nav.manageSidebar')
               @include('_includes.nav.managenavbar')
               <div id="content">
-
+                @include('_includes.messages')
                 
                 @yield('content')
 
@@ -55,6 +56,13 @@
                 //$('.col_ul').removeClass('collapse');
                $('.col_ul').collapse('show');
             });
+
+
+            /*
+              notifications
+            */
+
+           
 
 
         });

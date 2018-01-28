@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Broadcasting\PrivateChannel; //addded for broadcasting notification setup
 use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
@@ -28,4 +29,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function receivesBroadcastNotificationsOn()
+    {
+        return 'users-notify';
+    }
 }

@@ -19,6 +19,7 @@ Route::middleware('auth:api')->group(function(){
     	return $request->user();
 	});
 
+   //for ajax request in create posts page
 	Route::get('/posts/unique', ['as'=>'api.posts.unique',
 		       					 'uses'=>'PostController@getUniqueSlug']);
 								 

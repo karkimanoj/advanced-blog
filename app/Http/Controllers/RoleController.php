@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Role;
 use App\Permission;
+use App\Events\Event;
 use Session;
 
 class RoleController extends Controller
@@ -56,7 +57,8 @@ class RoleController extends Controller
         if($request->permission_checks)
             $role->permissions()->sync($request->permission_checks, false);
 
-        Session::flash('success','new role created successfully');
+            event(new Event($role));
+        //Session::flash('success','new role created successfully');
         return redirect()->route('roles.show', $role->id);
     }
 
@@ -108,6 +110,7 @@ class RoleController extends Controller
             $role->permissions()->sync($request->permission_checks, true);
 
         Session::flash('success','permissions succesfully updated for '.$role->display_name);
+        
         return redirect()->route('roles.show', $id);
         
     }

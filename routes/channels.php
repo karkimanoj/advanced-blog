@@ -14,3 +14,12 @@
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+
+Broadcast::channel('role-channel', function () {
+    return true;
+});
+
+Broadcast::channel('users-notify', function () {
+    return true;
+});

@@ -3,7 +3,7 @@
             <!-- Sidebar Holder -->
             <nav id="sidebar">
                 <div class="sidebar-header">
-                    <h3>Devmarketer admin</h3>
+                    <h3>kecstudents admin</h3>
                 </div>
 
                 <ul class="list-unstyled components">

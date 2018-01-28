@@ -73,7 +73,7 @@ class PermissionController extends Controller
                     $permission->description=$description;
                     $permission->save();
                 }    
-                Session::flash('new permissions created successfully ');
+                Session::flash('success', 'new permissions created successfully ');
                 return redirect()->route('permissions.index');
             }           
         } else

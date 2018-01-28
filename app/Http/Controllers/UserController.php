@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Notifications\TestNotification;
+use Auth;
 use App\User;
 use App\Role;
 use Session;
@@ -78,7 +80,7 @@ class UserController extends Controller
         if($user->save())
         {
              $user->roles()->sync($request->input('roles'), false);
-             Session::flash('error','sorry new user cannot be created');
+             Session::flash('success','new user created successfully');
             return redirect()->route('users.show', $user->id);
         }
         else
@@ -155,6 +157,20 @@ class UserController extends Controller
         {   
             $user->roles()->sync($request->input('roles'), true);
             Session::flash('success','updating user credentials for '.$user->name);
+
+            /*
+                notifying user if his profile is changed by other than himself
+            */  
+                /*$when=now()->addSeconds(10);
+
+                if(Auth::user()->id!=$id)
+                    $user->notify((new TestNotification($user))
+                         ->delay($when));
+                  */
+                $logged_user= Auth::user();        
+             if($logged_user->id!=$id)
+                    $user->notify(new TestNotification($logged_user));            
+
             return redirect()->route('users.show', $id);
         } else
         {
