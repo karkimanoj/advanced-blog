@@ -92,7 +92,8 @@ class PostController extends Controller
         //
     }
 
-    public function getUniqueSlug(Request $request){
+    public function getUniqueSlug(Request $request)
+    {
         $counter=0;
         $slug=$request->slug;
         while(Post::where('slug','=', $slug)->exists())
